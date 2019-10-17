@@ -41,6 +41,10 @@ button:hover {
 .current_dir a:hover {
     color: darkblue;
 }
+td:first-child:hover {
+    color: darkblue;
+    cursor: pointer;
+}
 
 .c_folders {
     width: 80%;
@@ -98,6 +102,9 @@ button:hover {
 
 .new_name {
     display: none;
+    text-align: center;
+}
+.paste {
     text-align: center;
 }
 

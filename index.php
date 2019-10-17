@@ -50,17 +50,18 @@ function files($current_dir, $files)
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         sort($files);
         foreach ($files as $value) {
+            $file_date = date("F d Y H:i", filemtime($current_dir . $value));
             $file_size = filesize($current_dir . $value);
             $file_type = finfo_file($finfo, $current_dir . $value);
             if ($file_size > 1000000) {
                 // HDD 1kb = 1000b.
                 $size = round($file_size / 1000000, 1) . "Mb";
             } elseif ($file_size > 1000) {
-                $size = $file_size % 1000 . "kb";
+                $size = round($file_size / 1000) . "kb";
             } else {
                 $size = $file_size . "b";
             }
-            echo "<tr><td><i class=\"far fa-file\"></i>$value</td><td>$size</td><td>$file_type</td></tr>";
+            echo "<tr><td><i class=\"far fa-file\"></i>$value</td><td>$file_date</td><td>$size</td><td>$file_type</td></tr>";
         }
         finfo_close($finfo);
     } else {

@@ -30,7 +30,6 @@ $(document).ready(function () {
                     {delete: value}, function () {
                         $("body").load(action);
                     });
-                alert("deleted");
             }
             $(".confirm").css({"display": "none"});
 
@@ -47,7 +46,6 @@ $(document).ready(function () {
                 {name: value, new_name: n_name}, function () {
                     $("body").load(action);
                 });
-            alert(n_name);
         });
     });
     // Copy element.
@@ -67,7 +65,6 @@ $(document).ready(function () {
             {past: "yes"}, function () {
                 $("body").load(action);
             });
-        alert("file...");
     });
 
 });
