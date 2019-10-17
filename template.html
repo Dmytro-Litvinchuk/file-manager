@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File manager</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="//kit.fontawesome.com/a076d05399.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/simple.js"></script>
+</head>
+<body>
+<header>
+    <h1>File manager</h1>
+    <?php if (isset($_GET["dir"])): ?>
+    <div class="button_back">
+        <button onclick="window.history.back();" type="button" class="fas fa-arrow-left"></button>
+    </div>
+    <?php endif; ?>
+    <div class="current_dir">
+        <?=tree($current_dir)?>
+    </div>
+    <div class="create_folder">
+        <form action="<?=$now?>" method="POST">
+            <input type="text" name="f_name" placeholder="name your folder"/>
+            <input type="submit" name="crt" value="create folder"/>
+        </form>
+    </div>
+    <div class="download_element">
+        <h3>Download file </h3>
+        <button type="button" name="<?=$current_dir?>" value=1>yes</button>
+        <button type="button" value=0>no</button>
+    </div>
+    <div class="change_element">
+        <button type="button" class="delete">delete</button>
+        <button type="button" class="rename">rename</button>
+        <button type="button" class="copy" value="<?=$current_dir?>">copy</button>
+        <button type="button" class="cut">cut</button>
+    </div>
+    <div class="confirm">
+        <h3>Are you sure?</h3>
+        <button type="button" value=1>yes</button>
+        <button type="button" value=0>no</button>
+    </div>
+    <div class="new_name">
+        <input type="text"/>
+        <button type="button">change name</button>
+    </div>
+    <?php if (isset($_SESSION["copy"]) or isset($_SESSION["cut"])): ?>
+    <div class="paste">
+        <button type="button">Paste</button>
+    </div>
+    <?php endif; ?>
+</header>
+<div class="content">
+    <div class="c_folders">
+        <h2>Folders:</h2>
+        <div class="folders">
+            <?=folders($current_dir, $folders)?>
+        </div>
+    </div>
+    <div class="c_files">
+        <h2>Files:</h2>
+        <div class="files">
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Size</th>
+                    <th>Type</th>
+                </tr>
+                <?=files($current_dir, $files)?>
+            </table>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="upload_form">
+        <form enctype="multipart/form-data" action="<?=$now?>" method="POST" id="uploadForm">
+            <input type="hidden" name="MAX_FILE_SIZE" value="2097152"/>
+            <input name="userfile" type="file"/>
+            <input type="submit" value="Upload file"/>
+        </form>
+    </div>
+</footer>
+</body>
+</html>
