@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if (isset($_GET["dir"])) {
     $current_dir = ($_GET["dir"]) . '/';
 } else {
@@ -18,7 +18,6 @@ function tree($current_dir)
         }
     }
 }
-
 if ($handle = opendir($current_dir)) {
     while (false !== ($entry = readdir($handle))) {
         if ($entry !== '.' && $entry !== '..') {
@@ -75,6 +74,7 @@ if (isset($_POST["crt"])) {
     if (!empty($dirname) && $dirname !== ' ') {
         if (!is_dir($current_dir . $dirname)) {
             mkdir($current_dir . $dirname, 0755);
+            echo "folder created";
         }
     } else {
         echo "folder not crated";
@@ -132,7 +132,6 @@ if (isset($_POST["name"]) && isset($_POST["new_name"])) {
         echo "Error";
     }
 }
-session_start();
 // Copy element.
 if (isset($_POST["copy"])) {
     $_SESSION["copy"] = $_POST["copy"];

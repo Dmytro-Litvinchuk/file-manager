@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <title>File manager</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="//kit.fontawesome.com/a076d05399.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/simple.js"></script>
+    <link rel="stylesheet" href="css/progress.css">
+    <script type="text/javascript" src="//kit.fontawesome.com/a076d05399.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/simple.js"></script>
 </head>
 <body>
 <header>
@@ -75,11 +76,19 @@
 </div>
 <footer>
     <div class="upload_form">
-        <form enctype="multipart/form-data" action="<?=$now?>" method="POST" id="uploadForm">
-            <input type="hidden" name="MAX_FILE_SIZE" value="2097152"/>
+        <div id="bar_blank">
+            <div id="bar_color"></div>
+        </div>
+        <div id="status"></div>
+        <form  id="myForm" enctype="multipart/form-data" action="<?=$now?>" method="POST" target="hidden_iframe">
+            <input type="hidden" value="myForm"
+                   name="<?php echo ini_get("session.upload_progress.name"); ?>">
+            <input type="hidden" name="MAX_FILE_SIZE" value="800097152"/>
             <input name="userfile" type="file"/>
             <input type="submit" value="Upload file"/>
         </form>
+        <iframe id="hidden_iframe" name="hidden_iframe" src="about:blank"></iframe>
+        <script type="text/javascript" src="js/progress.js"></script>
     </div>
 </footer>
 </body>
