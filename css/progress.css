@@ -1,0 +1,16 @@
+#bar_blank {
+    margin: 0 auto;
+    border: solid 1px #000;
+    height: 20px;
+    width: 60%;
+}
+
+#bar_color {
+    background-color: darkblue;
+    height: 20px;
+    width: 0px;
+}
+
+#bar_blank, #hidden_iframe {
+    display: none;
+}
