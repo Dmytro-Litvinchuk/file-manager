@@ -7,8 +7,7 @@ function createRequestObject() {
     var http;
     if (navigator.appName == "Microsoft Internet Explorer") {
         http = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    else {
+    } else {
         http = new XMLHttpRequest();
     }
     return http;
@@ -17,7 +16,9 @@ function createRequestObject() {
 function sendRequest() {
     var http = createRequestObject();
     http.open("GET", "progress.php");
-    http.onreadystatechange = function () { handleResponse(http); };
+    http.onreadystatechange = function () {
+        handleResponse(http);
+    };
     http.send(null);
 }
 
@@ -30,10 +31,8 @@ function handleResponse(http) {
 
         if (response < 100) {
             setTimeout("sendRequest()", 100);
-        }
-        else if (response == 100){
+        } else {
             toggleBarVisibility();
-            document.getElementById("status").innerHTML = "Done.";
             window.location.reload();
         }
     }

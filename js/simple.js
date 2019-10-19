@@ -6,7 +6,7 @@ $(document).ready(function () {
         $(".download_element h3").append(value);
         $(".download_element").css({"display": "block"});
         $(".download_element button").click(function () {
-            if ($(this).val() == 1) {
+            if ($(this).val() === '1') {
                 var current_dir = $(this).attr("name");
                 window.location.href = "?download=" + current_dir + '/' + value;
             }
@@ -25,11 +25,10 @@ $(document).ready(function () {
         $(".change_element").css({"display": "none"});
         $(".confirm").css({"display": "block"});
         $(".confirm button").click(function () {
-            if ($(this).val() == 1) {
-                $.post(action,
-                    {delete: value}, function () {
+            if ($(this).val() === '1') {
+                $.post(action, {delete: value}, function () {
                         $("body").load(action);
-                    });
+                });
             }
             $(".confirm").css({"display": "none"});
 
@@ -42,10 +41,9 @@ $(document).ready(function () {
         $(".new_name input").attr('placeholder', value);
         $(".new_name button").click(function () {
             var n_name = $(".new_name input").val();
-            $.post(action,
-                {name: value, new_name: n_name}, function () {
+            $.post(action, {name: value, new_name: n_name}, function () {
                     $("body").load(action);
-                });
+            });
         });
     });
     // Copy element.
@@ -61,10 +59,9 @@ $(document).ready(function () {
     });
     // Paste.
     $(".paste button").click(function () {
-        $.post(action,
-            {past: "yes"}, function () {
+        $.post(action, {past: "yes"}, function () {
                 $("body").load(action);
-            });
+        });
     });
 
 });

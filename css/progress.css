@@ -8,7 +8,7 @@
 #bar_color {
     background-color: darkblue;
     height: 20px;
-    width: 0px;
+    width: 0;
 }
 
 #bar_blank, #hidden_iframe {
