@@ -14,7 +14,7 @@ function tree($current_dir)
     foreach ($parts as $part) {
         if ($part !== '') {
             $link = stristr($current_dir, $part, true) . $part;
-            echo "<a href='?dir=" . $link . "'><i class=\"fas fa-folder-open\"></i>$part</a>";
+            echo "<a href='?dir=" . $link . "'><i class=\"far fa-folder-open\"></i>$part</a>";
         }
     }
 }
@@ -60,18 +60,20 @@ function files($current_dir, $files)
             } else {
                 $size = $file_size . "b";
             }
-            echo "<tr><td><i class=\"far fa-file\"></i>$value</td><td>$file_date</td><td>$size</td><td>$file_type</td></tr>";
+            echo <<<FILE
+<tr><td><i class="far fa-file"></i>$value</td><td>$file_date</td><td>$size</td><td>$file_type</td></tr>
+FILE;
         }
         finfo_close($finfo);
     } else {
-        echo "<tr><td>No files found</td></tr>";
+        echo "<p>No files found</p>";
     }
 }
 $now = "?" . $_SERVER['QUERY_STRING']; // Get value for using in jQuery.
 // Create new folder in current directory.
 if (isset($_POST["crt"])) {
-    $dirname = $_POST['f_name'];
-    if (!empty($dirname) && $dirname !== ' ') {
+    $dirname = trim($_POST['f_name']);
+    if (!empty($dirname)) {
         if (!is_dir($current_dir . $dirname)) {
             mkdir($current_dir . $dirname, 0755);
             echo "folder created";
@@ -122,7 +124,8 @@ if (isset($_POST["delete"])) {
 }
 // Rename element.
 if (isset($_POST["name"]) && isset($_POST["new_name"])) {
-    $old_name = $current_dir . $_POST['name'];
+    $old_name = trim($_POST['name']);
+    $old_name = $current_dir . $old_name;
     if (is_file($old_name) or is_dir($old_name)) {
         $new_name = $current_dir . $_POST["new_name"];
         if (!rename($old_name, $new_name)) {

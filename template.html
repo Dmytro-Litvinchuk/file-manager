@@ -23,13 +23,13 @@
     <div class="create_folder">
         <form action="<?=$now?>" method="POST">
             <input type="text" name="f_name" placeholder="name your folder"/>
-            <input type="submit" name="crt" value="create folder"/>
+            <input type="submit" name="crt" value="create folder" disabled/>
         </form>
     </div>
     <div class="download_element">
         <h3>Download file </h3>
-        <button type="button" name="<?=$current_dir?>" value=1>yes</button>
-        <button type="button" value=0>no</button>
+        <button type="button" name="<?=$current_dir?>" value='1'>yes</button>
+        <button type="button" value='0'>no</button>
     </div>
     <div class="change_element">
         <button type="button" class="delete">delete</button>
@@ -39,8 +39,8 @@
     </div>
     <div class="confirm">
         <h3>Are you sure?</h3>
-        <button type="button" value=1>yes</button>
-        <button type="button" value=0>no</button>
+        <button type="button" value='1'>yes</button>
+        <button type="button" value='0'>no</button>
     </div>
     <div class="new_name">
         <input type="text"/>
@@ -83,9 +83,9 @@
         <form  id="myForm" enctype="multipart/form-data" action="<?=$now?>" method="POST" target="hidden_iframe">
             <input type="hidden" value="myForm"
                    name="<?php echo ini_get("session.upload_progress.name"); ?>">
-            <input type="hidden" name="MAX_FILE_SIZE" value="800097152"/>
+            <input type="hidden" name="MAX_FILE_SIZE" value="419430400"/>
             <input name="userfile" type="file"/>
-            <input type="submit" value="Upload file"/>
+            <input type="submit" value="Upload file" disabled/>
         </form>
         <iframe id="hidden_iframe" name="hidden_iframe" src="about:blank"></iframe>
         <script type="text/javascript" src="js/progress.js"></script>

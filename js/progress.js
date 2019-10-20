@@ -33,6 +33,7 @@ function handleResponse(http) {
             setTimeout("sendRequest()", 100);
         } else {
             toggleBarVisibility();
+            document.getElementById("status").innerHTML = "Done";
             window.location.reload();
         }
     }

@@ -35,9 +35,12 @@ input[type=file] {
     text-transform: uppercase;
 }
 
-input[type=submit]:hover,
+input[type=submit]:hover:disabled {
+    cursor: auto;
+}
+
+input[type=submit]:hover:enabled,
 button:hover {
-    font-weight: bold;
     border-color: darkblue;
     color: darkblue;
 }
