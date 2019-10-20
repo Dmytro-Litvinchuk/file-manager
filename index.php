@@ -1,11 +1,12 @@
 <?php
-session_start();
-if (isset($_GET["dir"])) {
+session_start(); // Use: cut, copy, upload progress.
+$valid_dir = strpos($_GET["dir"], __DIR__); // Only current and up.
+if (isset($_GET["dir"]) && $valid_dir !== false) {
     $current_dir = ($_GET["dir"]) . '/';
 } else {
     $current_dir = __DIR__ . '/';
 }
-// Get tree for folders.
+// Tree folders.
 function tree($current_dir)
 {
     $fold = basename(__DIR__);
@@ -18,6 +19,7 @@ function tree($current_dir)
         }
     }
 }
+// Create array(files and folders).
 if ($handle = opendir($current_dir)) {
     while (false !== ($entry = readdir($handle))) {
         if ($entry !== '.' && $entry !== '..') {
@@ -44,7 +46,6 @@ function folders($current_dir, $folders)
 // Sorting files.
 function files($current_dir, $files)
 {
-    // Sorting files.
     if (isset($files)) {
         $finfo = finfo_open(FILEINFO_MIME_TYPE);
         sort($files);
@@ -69,19 +70,22 @@ FILE;
         echo "<p>No files found</p>";
     }
 }
-$now = "?" . $_SERVER['QUERY_STRING']; // Get value for using in jQuery.
-// Create new folder in current directory.
-if (isset($_POST["crt"])) {
-    $dirname = trim($_POST['f_name']);
-    if (!empty($dirname)) {
-        if (!is_dir($current_dir . $dirname)) {
-            mkdir($current_dir . $dirname, 0755);
-            echo "folder created";
-        }
-    } else {
-        echo "folder not crated";
+// Download element.
+if (isset($_GET["download"])) {
+    $file = $_GET["download"];
+    if (is_file($file)) {
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . basename($file) . '"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        readfile($file);
+        exit;
     }
 }
+$now = "?" . $_SERVER['QUERY_STRING']; // Get value for using in jQuery.
 // Upload file.
 if (isset($_FILES['userfile'])) {
     $uploadfile = $current_dir . basename($_FILES['userfile']['name']);
@@ -97,19 +101,16 @@ if (isset($_FILES['userfile'])) {
         echo "Error upload";
     }
 }
-// Download element.
-if (isset($_GET["download"])) {
-    $file = $_GET["download"];
-    if (is_file($file)) {
-        header('Content-Description: File Transfer');
-        header('Content-Type: application/octet-stream');
-        header('Content-Disposition: attachment; filename="' . basename($file) . '"');
-        header('Expires: 0');
-        header('Cache-Control: must-revalidate');
-        header('Pragma: public');
-        header('Content-Length: ' . filesize($file));
-        readfile($file);
-        exit;
+// Create new folder.
+if (isset($_POST["crt"])) {
+    $dirname = trim($_POST['f_name']);
+    if (!empty($dirname)) {
+        if (!is_dir($current_dir . $dirname)) {
+            mkdir($current_dir . $dirname, 0755);
+            echo "folder created";
+        }
+    } else {
+        echo "folder not crated";
     }
 }
 // Delete element.
