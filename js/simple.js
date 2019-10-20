@@ -3,6 +3,10 @@ $(document).ready(function () {
     if ($(".files p").html() === 'No files found') {
         $(".files table").hide();
     }
+    // Button back.
+    $(".button_back button").click(function () {
+        window.history.back();
+    });
     // Validation folder create.
     $('.create_folder input[type=text]').on('change', function () {
         var folder_name = $.trim($(this).val());
