@@ -13,25 +13,25 @@
 <header>
     <h1>File manager</h1>
     <?php if (isset($_GET["dir"])): ?>
-    <div class="button_back">
+    <div class="button-back">
         <button type="button" class="fas fa-arrow-left"></button>
     </div>
     <?php endif; ?>
-    <div class="current_dir">
+    <div class="current-dir">
         <?=tree($current_dir)?>
     </div>
-    <div class="create_folder">
+    <div class="create-folder">
         <form action="<?=$now?>" method="POST">
             <input type="text" name="f_name" placeholder="name your folder"/>
             <input type="submit" name="crt" value="create folder" disabled/>
         </form>
     </div>
-    <div class="download_element">
+    <div class="download-element">
         <h3>Download file </h3>
         <button type="button" name="<?=$current_dir?>" value='1'>yes</button>
         <button type="button" value='0'>no</button>
     </div>
-    <div class="change_element">
+    <div class="change-element">
         <button type="button" class="delete">delete</button>
         <button type="button" class="rename">rename</button>
         <button type="button" class="copy" value="<?=$current_dir?>">copy</button>
@@ -42,7 +42,7 @@
         <button type="button" value='1'>yes</button>
         <button type="button" value='0'>no</button>
     </div>
-    <div class="new_name">
+    <div class="new-name">
         <input type="text"/>
         <button type="button">change name</button>
     </div>
@@ -53,13 +53,13 @@
     <?php endif; ?>
 </header>
 <div class="content">
-    <div class="c_folders">
+    <div class="c-folders">
         <h2>Folders:</h2>
         <div class="folders">
             <?=folders($current_dir, $folders)?>
         </div>
     </div>
-    <div class="c_files">
+    <div class="c-files">
         <h2>Files:</h2>
         <div class="files">
             <table>
@@ -75,19 +75,19 @@
     </div>
 </div>
 <footer>
-    <div class="upload_form">
-        <div id="bar_blank">
-            <div id="bar_color"></div>
+    <div class="upload-form">
+        <div id="bar-blank">
+            <div id="bar-color"></div>
         </div>
         <div id="status"></div>
-        <form  id="myForm" enctype="multipart/form-data" action="<?=$now?>" method="POST" target="hidden_iframe">
+        <form  id="my-form" enctype="multipart/form-data" action="<?=$now?>" method="POST" target="hidden_iframe">
             <input type="hidden" value="myForm"
                    name="<?php echo ini_get("session.upload_progress.name"); ?>">
             <input type="hidden" name="MAX_FILE_SIZE" value="419430400"/>
             <input name="userfile" type="file"/>
             <input type="submit" value="Upload file" disabled/>
         </form>
-        <iframe id="hidden_iframe" name="hidden_iframe" src="about:blank"></iframe>
+        <iframe id="hidden-iframe" name="hidden_iframe" src="about:blank"></iframe>
         <script type="text/javascript" src="js/progress.js"></script>
     </div>
 </footer>

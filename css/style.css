@@ -16,7 +16,7 @@ h1 {
     text-align: center;
 }
 
-.create_folder {
+.create-folder {
     width: 80%;
     padding-top: 1.5%;
     margin: 0 auto;
@@ -45,21 +45,21 @@ button:hover {
     color: darkblue;
 }
 
-.button_back {
+.butto-back {
     padding-bottom: 1.5%;
 }
 
-.current_dir a {
+.current-dir a {
     text-decoration: none;
     color: #555;
     padding-right: .5%;
 }
 
-.current_dir a:last-child {
+.current-dir a:last-child {
     color: midnightblue;
 }
 
-.current_dir a:hover {
+.current-dir a:hover {
     color: darkblue;
 }
 
@@ -68,7 +68,7 @@ td:first-child:hover {
     cursor: pointer;
 }
 
-.c_folders {
+.c-folders {
     width: 80%;
     padding: 1%;
     margin: 0 auto;
@@ -91,23 +91,23 @@ td:first-child:hover {
     color: darkblue;
 }
 
-.c_files {
+.c-files {
     width: 80%;
     margin: 0 auto;
 }
 
-.c_files table {
+.c-files table {
     width: 100%;
 }
 
-.c_files th {
+.c-files th {
     text-align: left;
 }
 
-.download_element,
+.download-element,
 .confirm,
-.new_name,
-.change_element {
+.new-name,
+.change-element {
     display: none;
     text-align: center;
     margin-top: 2%;
@@ -120,7 +120,7 @@ td:first-child:hover {
     margin-bottom: 2%;
 }
 
-.upload_form {
+.upload-form {
     width: 80%;
     margin: 0 auto;
     text-align: center;

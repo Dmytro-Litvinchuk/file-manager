@@ -1,5 +1,5 @@
 function toggleBarVisibility() {
-    var e = document.getElementById("bar_blank");
+    var e = document.getElementById("bar-blank");
     e.style.display = (e.style.display == "block") ? "none" : "block";
 }
 
@@ -26,7 +26,7 @@ function handleResponse(http) {
     var response;
     if (http.readyState == 4) {
         response = http.responseText;
-        document.getElementById("bar_color").style.width = response + "%";
+        document.getElementById("bar-color").style.width = response + "%";
         document.getElementById("status").innerHTML = response + "%";
 
         if (response < 100) {
@@ -45,5 +45,5 @@ function startUpload() {
 }
 
 (function () {
-    document.getElementById("myForm").onsubmit = startUpload;
+    document.getElementById("my-form").onsubmit = startUpload;
 })();
