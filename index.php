@@ -40,7 +40,7 @@ function folders($current_dir, $folders)
             echo "<a href='?dir=" . $current_dir . $value . "'><i class=\"far fa-folder\"></i>$value</a>";
         }
     } else {
-        echo "<p>No folders found</p>";
+        echo "<p>No found</p>";
     }
 }
 // Sorting files.
@@ -67,7 +67,7 @@ FILE;
         }
         finfo_close($finfo);
     } else {
-        echo "<p>No files found</p>";
+        echo "<p>No found</p>";
     }
 }
 // Download element.

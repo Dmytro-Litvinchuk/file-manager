@@ -1,6 +1,6 @@
 $(document).ready(function () {
     // Hide table.
-    if ($(".files p").html() === 'No files found') {
+    if ($(".files p").html() === 'No found') {
         $(".files table").hide();
     }
     // Button back.
