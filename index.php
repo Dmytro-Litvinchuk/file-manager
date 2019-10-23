@@ -115,18 +115,19 @@ if (isset($_POST["crt"])) {
 }
 // Delete element.
 if (isset($_POST["delete"])) {
-    if (is_dir($current_dir . $_POST["delete"])) {
-        rmdir($current_dir . $_POST["delete"]);
-    } elseif (is_file($current_dir . $_POST["delete"])) {
-        unlink($current_dir . $_POST["delete"]);
+    $delete_element = $current_dir . $_POST["delete"];
+    if (is_dir($delete_element)) {
+        rmdir($delete_element);
+    } elseif (is_file($delete_element)) {
+        unlink($delete_element);
     } else {
         echo "Delete error";
     }
 }
 // Rename element.
 if (isset($_POST["name"]) && isset($_POST["new_name"])) {
-    $old_name = trim($_POST['name']);
-    $old_name = $current_dir . $old_name;
+    $valid_name = trim($_POST['name']);
+    $old_name = $current_dir . $valid_name;
     if (is_file($old_name) or is_dir($old_name)) {
         $new_name = $current_dir . $_POST["new_name"];
         if (!rename($old_name, $new_name)) {
@@ -138,30 +139,30 @@ if (isset($_POST["name"]) && isset($_POST["new_name"])) {
 }
 // Copy element.
 if (isset($_POST["copy"])) {
-    $_SESSION["copy"] = $_POST["copy"];
+    $_SESSION["copy_name"] = $_POST["copy"];
     $_SESSION["old_dir"] = $current_dir;
 }
-if (isset($_POST["past"]) && isset($_SESSION["copy"])) {
-    $old_dir = $_SESSION["old_dir"] . $_SESSION["copy"];
-    $new_dir = $current_dir . $_SESSION["copy"];
+if (isset($_POST["past"]) && isset($_SESSION["copy_name"])) {
+    $old_dir = $_SESSION["old_dir"] . $_SESSION["copy_name"];
+    $new_dir = $current_dir . $_SESSION["copy_name"];
     if (!copy($old_dir, $new_dir)) {
         echo "Copy error";
     }
-    unset($_SESSION["copy"]);
+    unset($_SESSION["copy_name"]);
     unset($_SESSION["old_dir"]);
 }
 // Cut element.
 if (isset($_POST["cut"])) {
-    $_SESSION["cut"] = $_POST["cut"];
+    $_SESSION["cut_name"] = $_POST["cut"];
     $_SESSION["old_dir"] = $current_dir;
 }
-if (isset($_POST["past"]) && isset($_SESSION["cut"])) {
-    $old_dir = $_SESSION["old_dir"] . $_SESSION["cut"];
-    $new_dir = $current_dir . $_SESSION["cut"];
+if (isset($_POST["past"]) && isset($_SESSION["cut_name"])) {
+    $old_dir = $_SESSION["old_dir"] . $_SESSION["cut_name"];
+    $new_dir = $current_dir . $_SESSION["cut_name"];
     if (!rename($old_dir, $new_dir)) {
         echo "Cutting error";
     }
-    unset($_SESSION["cut"]);
+    unset($_SESSION["cut_name"]);
     unset($_SESSION["old_dir"]);
 }
 include "template.html";

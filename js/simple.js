@@ -32,7 +32,7 @@ $(document).ready(function () {
         });
     });
     // Show context menu.
-    $("td:first-child, a").contextmenu(function () {
+    $("td:first-child, .content a").contextmenu(function () {
         $(".change-element").css({"display": "block"});
         // Global var "value".
         value = $(this).text();
