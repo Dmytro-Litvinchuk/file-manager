@@ -1,95 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>File manager</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/progress.css">
-    <script type="text/javascript" src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/simple.js"></script>
+  <meta charset="UTF-8">
+  <title>File manager</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/progress.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/simple.js"></script>
 </head>
 <body>
-<header>
+  <header>
     <h1>File manager</h1>
     <?php if (isset($_GET["dir"])): ?>
     <div class="button-back">
-        <button type="button" class="fas fa-arrow-left"></button>
+      <button type="button" class="fas fa-arrow-left"></button>
     </div>
     <?php endif; ?>
     <div class="current-dir">
-        <?=tree($current_dir)?>
+      <?=tree($current_dir)?>
     </div>
     <div class="create-folder">
-        <form action="<?=$now?>" method="POST">
-            <input type="text" name="f_name" placeholder="name your folder"/>
-            <input type="submit" name="crt" value="create folder" disabled/>
-        </form>
+      <form action="<?=$now?>" method="POST">
+        <input type="text" name="f_name" placeholder="name your folder"/>
+        <input type="submit" name="crt" value="create folder" disabled/>
+      </form>
     </div>
     <div class="download-element">
-        <h3>Download file </h3>
-        <button type="button" name="<?=$current_dir?>" value='1'>yes</button>
-        <button type="button" value='0'>no</button>
+      <h3>Download file </h3>
+      <button type="button" name="<?=$current_dir?>" value='1'>yes</button>
+      <button type="button" value='0'>no</button>
     </div>
     <div class="change-element">
-        <button type="button" class="delete">delete</button>
-        <button type="button" class="rename">rename</button>
-        <button type="button" class="copy" value="<?=$current_dir?>">copy</button>
-        <button type="button" class="cut">cut</button>
+      <button type="button" class="delete">delete</button>
+      <button type="button" class="rename">rename</button>
+      <button type="button" class="copy" value="<?=$current_dir?>">copy</button>
+      <button type="button" class="cut">cut</button>
     </div>
     <div class="confirm">
-        <h3>Are you sure?</h3>
-        <button type="button" value='1'>yes</button>
-        <button type="button" value='0'>no</button>
+      <h3>Are you sure?</h3>
+      <button type="button" value='1'>yes</button>
+      <button type="button" value='0'>no</button>
     </div>
     <div class="new-name">
-        <input type="text"/>
-        <button type="button">change name</button>
+      <input type="text"/>
+      <button type="button">change name</button>
     </div>
     <?php if (isset($_SESSION["copy_name"]) or isset($_SESSION["cut_name"])): ?>
     <div class="paste">
-        <button type="button">Paste</button>
+      <button type="button">Paste</button>
     </div>
     <?php endif; ?>
-</header>
-<div class="content">
-    <div class="c-folders">
+  </header>
+  <main>
+    <div class="content">
+      <div class="c-folders">
         <h2>Folders:</h2>
         <div class="folders">
-            <?=folders($current_dir, $folders)?>
+          <?=folders($current_dir, $folders)?>
         </div>
-    </div>
-    <div class="c-files">
+      </div>
+      <div class="c-files">
         <h2>Files:</h2>
         <div class="files">
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Size</th>
-                    <th>Type</th>
-                </tr>
-                <?=files($current_dir, $files)?>
-            </table>
+          <table>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Size</th>
+              <th>Type</th>
+            </tr>
+            <?=files($current_dir, $files)?>
+          </table>
         </div>
+      </div>
     </div>
-</div>
-<footer>
+  </main>
+  <footer>
     <div class="upload-form">
-        <div id="bar-blank">
-            <div id="bar-color"></div>
-        </div>
-        <div id="status"></div>
-        <form  id="my-form" enctype="multipart/form-data" action="<?=$now?>" method="POST" target="hidden_iframe">
-            <input type="hidden" value="myForm"
-                   name="<?php echo ini_get("session.upload_progress.name"); ?>">
-            <input type="hidden" name="MAX_FILE_SIZE" value="419430400"/>
-            <input name="userfile" type="file"/>
-            <input type="submit" value="Upload file" disabled/>
-        </form>
-        <iframe id="hidden-iframe" name="hidden_iframe" src="about:blank"></iframe>
-        <script type="text/javascript" src="js/progress.js"></script>
+      <div id="bar-blank">
+        <div id="bar-color"></div>
+      </div>
+      <div id="status"></div>
+      <form id="my-form" enctype="multipart/form-data" action="<?=$now?>"
+            method="POST" target="hidden_iframe">
+        <input type="hidden" value="myForm"
+               name="<?= ini_get("session.upload_progress.name"); ?>"/>
+        <input type="hidden" name="MAX_FILE_SIZE" value="419430400"/>
+        <input name="userfile" type="file"/>
+        <input type="submit" value="Upload file" disabled/>
+      </form>
+      <iframe id="hidden-iframe" name="hidden_iframe" src="about:blank"></iframe>
+      <script src="js/progress.js"></script>
     </div>
-</footer>
+  </footer>
 </body>
 </html>

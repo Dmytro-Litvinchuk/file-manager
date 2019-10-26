@@ -68,7 +68,6 @@ $(document).ready(function () {
         $.post(action, {copy: value});
         $(".change-element").css({"display": "none"});
     });
-
     // Cut.
     $(".cut").click(function () {
         $.post(action, {cut: value});

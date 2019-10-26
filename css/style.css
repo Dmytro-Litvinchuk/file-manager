@@ -1,134 +1,134 @@
 body {
-    background-color: lightblue;
-    background-image: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    font-family: 'Roboto', 'Oswald', sans-serif;
+  background-color: lightblue;
+  background-image: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: 'Roboto', 'Oswald', sans-serif;
 }
 
 button,
 input[type=submit],
 input[type=file] {
-    border-radius: 20px;
-    border-color: #e7f2fb;
-    outline: none;
-    background-color: transparent;
-    cursor: pointer;
-    text-align: center;
-    text-transform: uppercase;
+  border-radius: 20px;
+  border-color: #e7f2fb;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 input[type=submit]:hover:disabled {
-    cursor: auto;
+  cursor: auto;
 }
 
 input[type=submit]:hover:enabled,
 button:hover {
-    border-color: darkblue;
-    color: darkblue;
+  border-color: darkblue;
+  color: darkblue;
 }
 
 /* Header. */
 header {
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .create-folder {
-    width: 80%;
-    padding-top: 1.5%;
-    margin: 0 auto;
-    text-align: right;
+  width: 80%;
+  padding-top: 1.5%;
+  margin: 0 auto;
+  text-align: right;
 }
 
 .button-back {
-    padding-bottom: 1.5%;
+  padding-bottom: 1.5%;
 }
 
 .current-dir a {
-    text-decoration: none;
-    color: #555;
-    padding-right: .5%;
+  text-decoration: none;
+  color: #555;
+  padding-right: .5%;
 }
 
 .current-dir a:last-child {
-    color: midnightblue;
+  color: midnightblue;
 }
 
 .current-dir a:hover {
-    color: darkblue;
+  color: darkblue;
 }
 
 .download-element,
 .confirm,
 .new-name,
 .change-element {
-    display: none;
-    text-align: center;
-    margin-top: 2%;
-    margin-bottom: 2%;
+  display: none;
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
 .paste {
-    text-align: center;
-    margin-top: 2%;
-    margin-bottom: 2%;
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
-/* Content. */
+/* Main. */
 td:first-child:hover {
-    color: darkblue;
-    cursor: pointer;
+  color: darkblue;
+  cursor: pointer;
 }
 
 .c-folders {
-    width: 80%;
-    padding: 1%;
-    margin: 0 auto;
+  width: 80%;
+  padding: 1%;
+  margin: 0 auto;
 }
 
 .folders {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
 }
 
 .folders a {
-    display: inline-grid;
-    font-size: 1.5em;
-    color: #333;
-    text-decoration: none;
-    padding-bottom: 1.5%;
+  display: inline-grid;
+  font-size: 1.5em;
+  color: #333;
+  text-decoration: none;
+  padding-bottom: 1.5%;
 }
 
 .folders a:hover {
-    color: darkblue;
+  color: darkblue;
 }
 
 .c-files {
-    width: 80%;
-    margin: 0 auto;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .c-files table {
-    width: 100%;
+  width: 100%;
 }
 
 .c-files th {
-    text-align: left;
+  text-align: left;
 }
 
 /* Footer. */
 .upload-form {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    right: auto;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  right: auto;
 }
 

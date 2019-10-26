@@ -1,16 +1,16 @@
 #bar-blank {
-    margin: 0 auto;
-    border: solid 1px #000;
-    height: 20px;
-    width: 60%;
+  margin: 0 auto;
+  border: solid 1px #000;
+  height: 20px;
+  width: 60%;
 }
 
 #bar-color {
-    background-color: darkblue;
-    height: 20px;
-    width: 0;
+  background-color: darkblue;
+  height: 20px;
+  width: 0;
 }
 
 #bar-blank, #hidden-iframe {
-    display: none;
+  display: none;
 }
