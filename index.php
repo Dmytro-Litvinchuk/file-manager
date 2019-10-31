@@ -21,7 +21,7 @@ function tree($current_dir)
 }
 // Create array(files and folders).
 if ($handle = opendir($current_dir)) {
-    while (false !== ($entry = readdir($handle))) {
+    while (($entry = readdir($handle)) !== false) {
         if ($entry !== '.' && $entry !== '..') {
             if (is_dir($current_dir . $entry)) {
                 $folders[] = $entry;
@@ -39,8 +39,6 @@ function folders($current_dir, $folders)
         foreach ($folders as $value) {
             echo "<a href='?dir=" . $current_dir . $value . "'><i class=\"far fa-folder\"></i>$value</a>";
         }
-    } else {
-        echo "<p>No found</p>";
     }
 }
 // Sorting files.
@@ -66,8 +64,6 @@ function files($current_dir, $files)
 FILE;
         }
         finfo_close($finfo);
-    } else {
-        echo "<p>No found</p>";
     }
 }
 // Download element.

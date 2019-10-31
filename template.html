@@ -57,7 +57,11 @@
       <div class="c-folders">
         <h2>Folders:</h2>
         <div class="folders">
-          <?=folders($current_dir, $folders)?>
+          <?php if (isset($folders)): ?>
+            <?=folders($current_dir, $folders)?>
+          <?php else: ?>
+            <p>No found</p>
+          <?php endif; ?>
         </div>
       </div>
       <div class="c-files">
@@ -70,7 +74,11 @@
               <th>Size</th>
               <th>Type</th>
             </tr>
-            <?=files($current_dir, $files)?>
+            <?php if (isset($files)): ?>
+              <?=files($current_dir, $files)?>
+            <?php else: ?>
+              <p>No found</p>
+            <?php endif; ?>
           </table>
         </div>
       </div>
