@@ -1,4 +1,4 @@
-<h1>file-manager</h1>
+<h1>Simple file manager (Pure procedural php plus jQuery)</h1>
 <p>For download file please click on file and confirm your action.</p>
 <p>For change file(delete/copy/cut/rename) please click on context menu and select your action.<p>
   <a href="https://drive.google.com/file/d/1egs1pZ0hQsTyb8Dz6hrQON3UN7A1DuZp/view?usp=sharing">Video demonstration</a>
